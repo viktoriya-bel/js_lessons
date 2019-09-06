@@ -1,0 +1,54 @@
+.btn:active, .btn:focus { 
+	outline: none; 
+	box-shadow:none;
+}
+.pages{
+	padding: 0 10%;
+	margin-top: 50px;
+}
+#search .search-query{
+	height: 100%;
+}
+.icon-pencil{
+	float: right;
+}
+.icon-ok{
+	    float: right;
+}
+#date-save{
+	    height: 100%;
+}
+.top{
+	display: flex;
+    justify-content: space-between;
+        align-items: baseline;
+}
+.modal{
+	display: block;
+    height: min-content;
+    width: max-content;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+.form-people-add p{
+	display: flex;
+    justify-content: space-between;
+}
+.form-people-add p input{
+	    margin-left: 10px;
+	        min-height: 30px;
+}
+#profession-view .icon-plus{
+	    display: block;
+    margin: auto;
+}
+.profession-add-btn{
+	width: 100%;
+}
+#ModalViewDuties, #ModalPeopleProfessionEdit{
+    left: 60%;
+}
+#ModalProfession, #ModalAdd{
+	left: 51%;
+}

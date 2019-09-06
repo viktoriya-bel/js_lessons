@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Изучение js</title>
+  <!-- Подключаем Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  
+  <link rel="stylesheet" href="css/bootstrap-responsive.css" />
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  
+
+</head>
+<body>
+
+<header></header>
+<div class="pages">
+	<div class="top">
+		<div id="search">
+			<form class="form-search">
+			  <input type="text" id="searchInput" class="input-large search-query">
+			  <button type="submit" class="btn">Найти</button>
+			</form>
+		</div>
+		<button class="btn  btn-primary" type="button" data-toggle="modal" data-target="#ModalAdd"> Добавить пользователя </button>
+		<button class="btn  btn-primary" type="button" onClick="ModalProfessionOpen();" > Професии </button>
+	</div>
+	
+	<table class="table">
+		<thead class="thead-inverse">
+			<tr>
+				<th>№</th>
+				<th>Имя</th>
+				<th>Фамилия</th>
+				<th>Дата рождения</th>
+				<th>Фото</th>
+				<th>Профессия</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody id="table-people">
+
+		</tbody>
+	</table>
+
+
+</div>
+<!-- Модальное окно -->  
+<div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog"  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-people-add" name="formPeopleAdd">
+			  <p>Имя <input type="text" id="first-add" class="input-large"></p>
+			  <p>Фамилия <input type="text" id="last-add" class="input-large"></p>
+			  <p>Дата рождения <input type="date" id="date-add" class="input-large"></p>
+			  <p>Ссылка на фото <input type="text" id="thumbnail-add" class="input-large"></p>
+			  <p>Профессия <input type="text" id="profession-add" class="input-large"></p>
+			  <button type="button" class="btn btn-primary" onClick="submitAdd();" >Сохранить</button>
+		</form>
+      </div>
+      <!--<div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-primary">Сохранить</button>
+      </div>--> 
+    </div><!-- /.модальное окно-Содержание -->  
+  </div><!-- /.модальное окно-диалог --> 
+</div>
+
+<!-- Модальное окно -->  
+<div class="modal fade" id="ModalProfession" tabindex="-1" role="dialog"  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<div class="profession-block">
+      		<h3>Профессии</h3>
+      		<div></div>
+      	</div>
+      	<table class="table">
+			<thead class="thead-inverse">
+				<tr>
+					<th>№</th>
+					<th>Професии</th>
+					<th>Обязаности</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody id="profession-view">
+				
+			</tbody>
+		</table>
+		<table class="table">
+			<tbody>
+				<tr id="profession-adds">
+
+				</tr>
+			</tbody>
+		</table>
+      	<button class="btn  btn-primary profession-add-btn" type="button" onClick="ProfessionAdd();" > Добавить профессию </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div><!-- /.модальное окно-Содержание -->  
+  </div><!-- /.модальное окно-диалог --> 
+</div>
+<!-- Модальное окно -->  
+<div class="modal fade" id="ModalPeopleProfessionEdit" tabindex="-1" role="dialog"  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<div class="profession-block">
+      		<h3>Профессии</h3>
+      		<div id="profession-edit-view"></div>
+      	</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-primary"onClick="ProfessionSaveButton();">Сохранить</button>
+      </div>
+    </div><!-- /.модальное окно-Содержание -->  
+  </div><!-- /.модальное окно-диалог --> 
+</div>
+<!-- Модальное окно -->  
+<div class="modal fade" id="ModalViewDuties" tabindex="-1" role="dialog"  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<div class="profession-block">
+      		<h3>Обязанности</h3>
+      		<div id="Duties-view"></div>
+      	</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div><!-- /.модальное окно-Содержание -->  
+  </div><!-- /.модальное окно-диалог --> 
+</div>
+
+<footer></footer>
+	<!-- Подключаем jQuery -->
+    <script src="js/jquery.js"></script>
+    <!-- Подключаем Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+ 	<script src="js/script.js"></script>
+</body>
+</html>
